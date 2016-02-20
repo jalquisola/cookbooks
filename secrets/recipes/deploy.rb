@@ -9,6 +9,8 @@ node[:deploy].each do |application, deploy|
     action :nothing
   end
 
+  Chef::Log.info("Deploy: #{deploy.inspect}")
+  Chef::Log.info("node[:deploy]: #{node[:deploy].inspect}")
   directory "#{deploy[:deploy_to]}/shared/config" do
     group deploy[:group]
     owner deploy[:user]
